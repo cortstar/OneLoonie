@@ -7,6 +7,11 @@ OneLoonie is a gesture recognizer for the Unity game engine based on the [OneDol
 2.  In `Serialization/GestureTemplateLoader.cs`, configure the filepath for the gesture save file. *Later, this will be done via config file.*
 3.  *Optional* In `Recognizers/OneLoonieRecognizer.cs` , edit the values for "resample size" to whichever fidelity is required.
 
+## Concepts
+- Gesture: A gesture is a collection of connected points, like a contellation. A gesture has only a single line and is directional (has a start and an end).
+- Template: A template is effectively a name attached to a number of examples of that gesture. Gestures are recognized by testing against templates. (In this way you can have a clockwise square and a counterclockwise square both resolve to "Square", or you could use separate templates and have them resolve to CCSquare and CSquare).
+- Example: An 'example' is a gesture normalized for comparison to incoming gestures, attached to a template. A single template may have many gestures.
+
 ## Saving Templates
 1. Add new templates directly to `GestureTemplateLoader.TemplateLoader.templates` and call `GestureTemplateLoader.TemplateLoader.SaveTemplates()` to store all templates currently loaded. The templates should be normalized before recognition with `IGestureRecognizer.Normalize()` which will "get the gesture ready" for recognition.
 
